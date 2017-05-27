@@ -22,7 +22,7 @@ import com.vaadin.testbench.TestBenchTestCase;
  */
 
 @RunWith(value = Parameterized.class)
-public class BaseTest extends TestBenchTestCase implements HelperMethodsTrait {
+public abstract class BaseTest extends TestBenchTestCase implements HelperMethodsTrait {
 
     @Parameterized.Parameter
     public WebDriver nextWebDriver;

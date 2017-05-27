@@ -4,21 +4,21 @@ import org.junit.Test;
 import org.rapidpm.frp.vaadin.addon.testbench.ng.BaseTest;
 import com.vaadin.testbench.By;
 import com.vaadin.testbench.TestBenchElement;
+import com.vaadin.ui.Button;
 
 public class ElementScreenCompareIT extends BaseTest {
 
   @Override
   public String getDeploymentPath() {
-//        return "/" + ElementQueryUI.class.getSimpleName();
-    return null;
+        return "/" + ElementQueryUI.class.getSimpleName();
   }
 
   @Test
   public void elementCompareScreen()
       throws Exception {
     openTestURL();
-    TestBenchElement button4 = (TestBenchElement) findElements(By.className("v-button")).get(4);
 
+    T first = $(Button.class).first();
     button4.click();
 
     //        Assert.assertTrue(button4.compareScreen("button4"));

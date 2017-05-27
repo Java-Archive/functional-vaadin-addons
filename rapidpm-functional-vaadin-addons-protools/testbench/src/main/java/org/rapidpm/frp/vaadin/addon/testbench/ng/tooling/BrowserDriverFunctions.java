@@ -97,7 +97,7 @@ public interface BrowserDriverFunctions {
 
     Function<String, Result<WebDriver>> localWebDriverInstance = browserType -> match(
         matchCase(() -> success(new PhantomJSDriver())),
-        matchCase(browserType::isEmpty, () -> Result.failure("browserTape should not be emtpy")),
+        matchCase(browserType::isEmpty, () -> Result.failure("browserTape should not be empty")),
         matchCase(() -> browserType.equals(BrowserType.PHANTOMJS), () -> success(new PhantomJSDriver())),
         matchCase(() -> browserType.equals(BrowserType.FIREFOX), () -> success(new FirefoxDriver())),
         matchCase(() -> browserType.equals(BrowserType.CHROME), () -> success(new ChromeDriver())),
@@ -183,7 +183,7 @@ public interface BrowserDriverFunctions {
 
     Supplier<List<WebDriver>> webDriverInstances = () -> {
 
-        readTestbenchProperties.execute();
+        readTestbenchProperties.execute(); // load properties for locale webdriver
 
         final Properties properties = readProperties
             .apply("config/selenium-grids.properties")
