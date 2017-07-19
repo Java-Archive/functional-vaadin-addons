@@ -11,6 +11,7 @@ public interface AssertsTrait {
    * @param message The message to include in the {@link AssertionError}
    * @param a
    * @param b
+   * @param <T>
    * @throws AssertionError If comparison fails
    */
   default <T> void assertGreaterOrEqual(String message,
@@ -26,6 +27,7 @@ public interface AssertsTrait {
    * @param message The message to include in the {@link AssertionError}
    * @param a
    * @param b
+   * @param <T>
    * @throws AssertionError If comparison fails
    */
   default <T> void assertGreater(String message, Comparable<T> a, T b)
@@ -36,10 +38,10 @@ public interface AssertsTrait {
 
   /**
    * Asserts that {@literal a} is &lt;= {@literal b}
-   *
-   * @param message The message to include in the {@link AssertionError}
+   * @param message
    * @param a
    * @param b
+   * @param <T>
    * @throws AssertionError If comparison fails
    */
   default <T> void assertLessThanOrEqual(String message,
@@ -55,6 +57,7 @@ public interface AssertsTrait {
    * @param message The message to include in the {@link AssertionError}
    * @param a
    * @param b
+   * @param <T>
    * @throws AssertionError If comparison fails
    */
   default <T> void assertLessThan(String message,

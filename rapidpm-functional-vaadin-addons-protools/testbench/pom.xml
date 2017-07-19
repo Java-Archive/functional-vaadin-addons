@@ -12,20 +12,29 @@
 
   <artifactId>rapidpm-functional-vaadin-addons-protools-testbench</artifactId>
 
+  <properties>
+    <driver-binary-downloader-maven-plugin.version>1.0.13</driver-binary-downloader-maven-plugin.version>
+  </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-server</artifactId>
-    </dependency>
 
+
+    <!--TDD -->
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-testbench</artifactId>
+      <version>${vaadin-testbench.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jetty.websocket</groupId>
+          <artifactId>websocket-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-testbench-core</artifactId>
+      <version>${vaadin-testbench.version}</version>
     </dependency>
 
     <dependency>
@@ -36,14 +45,65 @@
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
     </dependency>
+
+
     <!--part of production scope -->
+    <!--TDD Coe Java -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <!--jUnit5-->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>compile</scope>
     </dependency>
 
-
-
   </dependencies>
+
+
+
+  <profiles>
+    <profile>
+      <id>vaadin_pro-tool_testbench</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.lazerycode.selenium</groupId>
+            <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+            <version>${driver-binary-downloader-maven-plugin.version}</version>
+            <configuration>
+              <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
+              <rootStandaloneServerDirectory>${project.build.directory}/driver
+              </rootStandaloneServerDirectory>
+              <downloadedZipFileDirectory>${project.build.directory}/driver_zips
+              </downloadedZipFileDirectory>
+              <customRepositoryMap>${project.basedir}/config/drivers.xml</customRepositoryMap>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>selenium</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
 
 </project>

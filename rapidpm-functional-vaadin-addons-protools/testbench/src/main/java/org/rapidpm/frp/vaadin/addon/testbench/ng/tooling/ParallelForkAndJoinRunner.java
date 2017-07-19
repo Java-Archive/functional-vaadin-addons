@@ -16,7 +16,7 @@ public class ParallelForkAndJoinRunner extends BlockJUnit4ClassRunner {
     /**
      * Creates a BlockJUnit4ClassRunner to run {@code klass}
      *
-     * @param klass
+     * @param klass to run
      * @throws InitializationError
      *     if the test class is malformed.
      */

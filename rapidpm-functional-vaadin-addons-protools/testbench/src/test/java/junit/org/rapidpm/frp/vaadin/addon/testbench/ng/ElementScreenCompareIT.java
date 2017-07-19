@@ -18,8 +18,8 @@ public class ElementScreenCompareIT extends BaseTest {
       throws Exception {
     openTestURL();
 
-    T first = $(Button.class).first();
-    button4.click();
+//    T first = $(Button.class).first();
+//    button4.click();
 
     //        Assert.assertTrue(button4.compareScreen("button4"));
     //        TestBenchElement layout = (TestBenchElement) button4.findElement(By.xpath("../.."));

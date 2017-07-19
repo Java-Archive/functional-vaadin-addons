@@ -12,4 +12,46 @@
     <artifactId>rapidpm-functional-vaadin-addons-framework</artifactId>
 
 
+    <dependencyManagement>
+        <dependencies>
+            <!--RapidPM stuff  -->
+            <dependency>
+                <groupId>org.rapidpm.microservice</groupId>
+                <artifactId>rapidpm-microservice-bom</artifactId>
+                <version>${rapidpm-microservice-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-server</artifactId>
+        </dependency>
+
+
+        <!--RapidPM optional-->
+        <dependency>
+            <groupId>org.rapidpm.dynamic-cdi</groupId>
+            <artifactId>rapidpm-dynamic-cdi-modules-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.rapidpm.microservice</groupId>
+            <artifactId>rapidpm-microservice-modules-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.rapidpm.microservice</groupId>
+            <artifactId>rapidpm-microservice-modules-core-testutils</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
 </project>

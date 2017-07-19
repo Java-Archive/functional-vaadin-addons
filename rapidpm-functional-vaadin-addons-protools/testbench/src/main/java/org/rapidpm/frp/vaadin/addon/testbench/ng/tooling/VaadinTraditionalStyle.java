@@ -1,5 +1,6 @@
 package org.rapidpm.frp.vaadin.addon.testbench.ng.tooling;
 
+import org.rapidpm.frp.vaadin.addon.testbench.ng.BaseTest;
 import com.vaadin.server.LegacyApplication;
 import com.vaadin.server.UIProvider;
 import com.vaadin.ui.UI;
@@ -14,14 +15,10 @@ public interface VaadinTraditionalStyle {
    * The path contains the full path (appended to hostname+port) and must
    * start with a slash.
    * <p>
-   * This method takes into account {@link #isPush()} and {@link #isDebug()}
+   * This method takes into account {@link BaseTest#isPush()} isPush()} and {@link #isDebug()}
    * when the path is generated.
    *
-   * @param uiClass
-   * @param push
-   *     true if "?debug" should be added
-   * @param debug
-   *     true if /run-push should be used instead of /run
+   * @param uiClass to get the part of the url from
    * @return The path to the given UI class
    */
   default String getDeploymentPath(Class<?> uiClass) {
@@ -45,10 +42,6 @@ public interface VaadinTraditionalStyle {
    * Returns the path that should be used for the test. The path contains the
    * full path (appended to hostname+port) and must start with a slash.
    *
-   * @param push
-   *     true if "?debug" should be added
-   * @param debug
-   *     true if /run-push should be used instead of /run
    * @return The URL path to the UI class to test
    */
   default String getDeploymentPath() {
@@ -97,6 +90,7 @@ public interface VaadinTraditionalStyle {
   }
 
   /**
+   * @param cls
    * @return true if the given class is supported by ApplicationServletRunner
    */
   @SuppressWarnings("deprecation")
